@@ -10,6 +10,18 @@ import glob
 import os
 import shutil
 
+def prepro(basedir):
+    for item in glob.glob(os.path.join(basedir, 'sub-*','func','sub-*_task-bart_bold.nii.gz')):
+        input=item
+        output_path=item.split('.')[0]
+        output=output_path+('_brain')
+        os.system("/usr/local/fsl/bin/bet %s %s -F"%(input, output))
+        pdb.set_trace()
+def main():
+    basedir = '/Users/kendradavis/Desktop/FMRI/SUBJECT'
+    prepro(basedir)
+main()
+
 
 def prepro(basedir):
     #do something cool 
